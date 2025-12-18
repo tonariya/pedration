@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Page Title</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="icon" href="./favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <main>
+    <div class="ui-overlay">
+      PS1.EXE LOADING...
+      <br>
+      VERTICES:
+      <span id="vertex-count">
+        0
+      </span>
+    </div>
+
+    <div class="scanlines">
+    </div>
+
+    <img class="overlay" src="media/overlay.gif">
+    <img class="bg" src="/media/bg.gif">
+    <img class="spyro" src="media/spyro.gif">
+    <img class="tomba" src="media/tombar_run.webp">
+    <img class="croc" src="media/croc.gif">
+
+    <section>
+      <div class="parabens">
+        <div class="letter">
+          P
+        </div>
+        <div class="letter">
+          A
+        </div>
+        <div class="letter">
+          R
+        </div>
+        <div class="letter">
+          A
+        </div>
+        <div class="letter">
+          B
+        </div>
+        <div class="letter">
+          É
+        </div>
+        <div class="letter">
+          N
+        </div>
+        <div class="letter">
+          S
+        </div>
+      </div>
+    </section>
+    <section>
+      <h1>PERD0!!!!111!</h1>
+    </section>
+  </main>
+
+  <!-- gsap imports-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/ScrollTrigger.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Lenis smooth scroll -->
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+  <!-- Initialize Lenis -->
+  <script>
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      smoothWheel: true
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    // Integrate with GSAP ScrollTrigger
+    lenis.on('scroll', ScrollTrigger.update);
+
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+
+    gsap.ticker.lagSmoothing(0);
+  </script>
+
+    <!-- local scripts -->
+    <script src="./js/script-2.js"></script>
+</body>
+
+</html>
